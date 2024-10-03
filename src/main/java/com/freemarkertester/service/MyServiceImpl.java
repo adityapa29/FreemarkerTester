@@ -103,4 +103,49 @@ public class MyServiceImpl implements MyService {
 
         return orderDetails;
     }
+
+    @Override
+    public Map<String, Object> buildPickAndPackRollbackDataModel() {
+        Map<String,Object> dataModel = new HashMap<>();
+        dataModel.put("transaction_number","625223");
+        dataModel.put("warehouse_name","Bangalore (CDC)");
+        dataModel.put("sum_scheme_qty_transacted",0);
+        dataModel.put("sum_qty_transacted",10);
+        dataModel.put("item_conversion_factor",0.5);
+
+        List<Map<String, Object>> items = new ArrayList<>();
+        Map<String,Object> item = new HashMap<>();
+        item.put("product_name","HMD Dispovan Syringe without Needle - 20ml Pack of 25");
+        item.put("order_number","OM1048125942");
+        item.put("product_id","MBCND250315000000301");
+
+        List<Map<String, Object>> batchRollbacks = new ArrayList<>();
+        Map<String,Object> batchRollback = new HashMap<>();
+        batchRollback.put("qty_transacted",4);
+        batchRollback.put("scheme_qty_transacted",1);
+        batchRollback.put("cf_batch","BATCH_12345");
+        batchRollback.put("cf_exp","2027-07-23");
+        batchRollback.put("cf_uom","Piece");
+        batchRollbacks.add(batchRollback);
+        item.put("batchRollbacks",batchRollbacks);
+
+        items.add(item);
+        dataModel.put("items",items);
+
+        List<Map<String, Object>> allCFList = new ArrayList<>();
+        Map<String,Object> cf1 = new HashMap<>();
+        cf1.put("cf_name","Heading 1");
+        cf1.put("cf_id","batch");
+        Map<String,Object> cf2 = new HashMap<>();
+        cf2.put("cf_name","Heading 2");
+        cf2.put("cf_id","exp");
+        Map<String,Object> cf3 = new HashMap<>();
+        cf3.put("cf_name","Heading 3");
+        cf3.put("cf_id","uom");
+        allCFList.add(cf1);
+        allCFList.add(cf2);
+        allCFList.add(cf3);
+        dataModel.put("allCFList",allCFList);
+        return dataModel;
+    }
 }

@@ -17,9 +17,15 @@ public class MyController {
 
     @GetMapping("/orderAcknowledgementPdf")
     public String orderAcknowledgementPdf(Model model) throws ParseException {
-
         Map<String, Object> orderDetails = myService.createOrderAcknowledgement();
         model.addAllAttributes(orderDetails);
         return "OrderAcknowledgementPdf";
+    }
+
+    @GetMapping("/pickAndPackRollback")
+    public String pickAndPackRollback(Model model) {
+        Map<String, Object> dataModel = myService.buildPickAndPackRollbackDataModel();
+        model.addAllAttributes(dataModel);
+        return "PickAndPackRollback";
     }
 }
