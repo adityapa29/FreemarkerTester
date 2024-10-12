@@ -54,9 +54,9 @@
 <#-- <#list groupPickAndPackLog?uniqueBy('product_id') as uniquePickAndPackLog> -->
 <#--    <#assign skuWisePickAndPackLogs = groupPickAndPackLog?filter(it -> it.product_id == uniquePickAndPackLog.product_id)> -->
 
-        <#assign totalSchemeQty = sum_scheme_qty_transacted />
-        <#assign totalQty = sum_qty_transacted />
-        <#assign conversionFactor = item_conversion_factor />
+        <#assign totalSchemeQty = item.sum_scheme_qty_transacted />
+        <#assign totalQty = item.sum_qty_transacted />
+        <#assign conversionFactor = item.conversion_factor />
 
         <table class="wrapper" width="90%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top:8px;border-collapse: collapse;">
             <thead>

@@ -109,15 +109,15 @@ public class MyServiceImpl implements MyService {
         Map<String,Object> dataModel = new HashMap<>();
         dataModel.put("transaction_number","625223");
         dataModel.put("warehouse_name","Bangalore (CDC)");
-        dataModel.put("sum_scheme_qty_transacted",0);
-        dataModel.put("sum_qty_transacted",10);
-        dataModel.put("item_conversion_factor",0.5);
 
         List<Map<String, Object>> items = new ArrayList<>();
         Map<String,Object> item = new HashMap<>();
         item.put("product_name","HMD Dispovan Syringe without Needle - 20ml Pack of 25");
         item.put("order_number","OM1048125942");
         item.put("product_id","MBCND250315000000301");
+        item.put("sum_scheme_qty_transacted",0);
+        item.put("sum_qty_transacted",10);
+        item.put("conversion_factor",0.5);
 
         List<Map<String, Object>> batchRollbacks = new ArrayList<>();
         Map<String,Object> batchRollback = new HashMap<>();
