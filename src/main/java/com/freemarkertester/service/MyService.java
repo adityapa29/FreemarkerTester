@@ -7,4 +7,6 @@ public interface MyService {
     Map<String, Object> createOrderAcknowledgement() throws ParseException;
 
     Map<String, Object> buildPickAndPackRollbackDataModel();
+
+    Map<String, Object> buildmbproApprovalDataModel();
 }

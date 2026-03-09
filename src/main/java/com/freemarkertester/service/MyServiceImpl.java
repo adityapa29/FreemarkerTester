@@ -148,4 +148,69 @@ public class MyServiceImpl implements MyService {
         dataModel.put("allCFList",allCFList);
         return dataModel;
     }
+
+    @Override
+    public Map<String, Object> buildmbproApprovalDataModel() {
+
+        Map<String, Object> dataModel = new HashMap<>();
+
+        // Manager and BDE
+        dataModel.put("managerName", "Rahul Sharma");
+        dataModel.put("bdeName", "Amit Verma");
+
+        // Currency
+        dataModel.put("currencySymbol", "Rs.");
+
+        // Approve / Reject URLs
+        dataModel.put("approveUrl", "https://prota.medikabazaar.com/order/approve?orderId=TEST123");
+        dataModel.put("rejectUrl", "https://prota.medikabazaar.com/order/reject?orderId=TEST123");
+
+        // Sales Order Object
+        Map<String, Object> salesOrder = new HashMap<>();
+        salesOrder.put("incrementId", "TEST123");
+        salesOrder.put("createdAt", "10 Mar 2026");
+        salesOrder.put("taxAmount", 0.5);
+        salesOrder.put("couponCode", "TESTCOUPON");
+        salesOrder.put("discountAmount", 0);
+        salesOrder.put("grandTotal", 10.5);
+
+        dataModel.put("salesOrder", salesOrder);
+
+        // Order Items
+        List<Map<String, Object>> orderItems = new ArrayList<>();
+
+        Map<String, Object> item1 = new HashMap<>();
+        item1.put("name", "VIVI Cap1 Insulin Temperature Shield (Fits Multi-Model Refillable Pen)");
+        item1.put("itemCode", "VIVI001");
+        item1.put("alternateUom", "Piece");
+        item1.put("qtyOrdered", 1);
+        item1.put("deliveryDate", "15 Mar 2026");
+        item1.put("price", 10);
+        item1.put("discountAmount", 0);
+        item1.put("additionalDiscountAmount", 0);
+        item1.put("taxPercent", 5);
+        item1.put("taxAmount", 0.5);
+        item1.put("isMspMissing", false);
+
+        orderItems.add(item1);
+
+        Map<String, Object> item2 = new HashMap<>();
+        item2.put("name", "VIVI Cap1 Insulin Temperature Shield (Fits Multi-Model Refillable Pen)");
+        item2.put("itemCode", "VIVI001");
+        item2.put("alternateUom", "Piece");
+        item2.put("qtyOrdered", 1);
+        item2.put("deliveryDate", "15 Mar 2026");
+        item2.put("price", 10);
+        item2.put("discountAmount", 0);
+        item2.put("additionalDiscountAmount", 0);
+        item2.put("taxPercent", 5);
+        item2.put("taxAmount", 0.5);
+        item2.put("isMspMissing", true);
+
+        orderItems.add(item2);
+
+        dataModel.put("orderItems", orderItems);
+
+        return dataModel;
+    }
 }

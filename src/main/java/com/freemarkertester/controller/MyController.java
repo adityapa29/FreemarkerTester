@@ -28,4 +28,11 @@ public class MyController {
         model.addAllAttributes(dataModel);
         return "PickAndPackRollback";
     }
+
+    @GetMapping("/mbproApproval")
+    public String mbproApproval(Model model) {
+        Map<String, Object> dataModel = myService.buildmbproApprovalDataModel();
+        model.addAllAttributes(dataModel);
+        return "mbproApproval";
+    }
 }
