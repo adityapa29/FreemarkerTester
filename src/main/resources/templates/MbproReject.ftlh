@@ -14,9 +14,13 @@ body{
     color:#333;
 }
 
+.outer-wrapper{
+    padding:40px 0;
+}
+
 .container{
     width:820px;
-    margin:40px auto;
+    margin:auto;
 }
 
 .text{
@@ -50,13 +54,13 @@ body{
 .table th{
     background:#f3f4f6;
     border:1px solid #d1d5db;
-    padding:12px;
+    padding:14px 12px;
     text-align:left;
 }
 
 .table td{
     border:1px solid #e5e7eb;
-    padding:12px;
+    padding:14px 12px;
 }
 
 .right{
@@ -67,32 +71,26 @@ body{
     font-weight:bold;
 }
 
-.button-wrapper{
-    margin-top:30px;
-}
-
-.btn{
-    display:inline-block;
-    padding:12px 22px;
-    font-size:14px;
-    font-weight:bold;
-    text-decoration:none;
-    border-radius:6px;
-    margin-right:10px;
-}
-
-.btn-approve{
-    background:#1f8f43;
-    color:white;
-}
-
-.btn-reject{
-    background:#dc2626;
-    color:white;
-}
-
 .footer-text{
+    margin-top:18px;
+    font-size:14px;
+}
+
+.signature{
+    margin-top:28px;
+    font-size:14px;
+}
+
+.item-code{
+    color:#777;
+    font-size:12px;
+}
+
+.rejection-box{
     margin-top:20px;
+    padding:14px;
+    background:#fdecea;
+    border-left:4px solid #d93025;
     font-size:14px;
 }
 
@@ -102,22 +100,20 @@ body{
 
 <body>
 
+<div class="outer-wrapper">
+
 <div class="container">
 
 <p class="text">
-Hi ${managerName!""},
+Hi ${bdeName!""},
 </p>
 
 <p class="text">
-An order has been initiated by <b>${bdeName!""}</b> for the below customer, however both
-<b>Selling Price (SP)</b> and <b>Minimum Selling Price (MSP)</b> are not defined in the system.
+The order initiated by you for <b>${customerName!""}</b>
+(Order ID: <b>${salesOrder.incrementId!""}</b>) has been reviewed by the Manager and has been rejected.
 </p>
 
-<p class="text">
-As per policy, approval is required before proceeding.
-</p>
-
-<div class="heading">Order Details</div>
+<div class="heading">Rejection Details</div>
 
 <div class="meta">
 <b>Order ID:</b> ${salesOrder.incrementId!""}<br>
@@ -157,7 +153,7 @@ style="background-color:#FFF6E5;border-left:4px solid #F5C26B;"
 <td>
 <b>${item.name!""}</b>
 <#if item.itemCode??>
-<br><span style="color:#666;font-size:12px">Item Code: ${item.itemCode}</span>
+<br><span class="item-code">Item Code: ${item.itemCode}</span>
 </#if>
 </td>
 
@@ -217,19 +213,25 @@ style="background-color:#FFF6E5;border-left:4px solid #F5C26B;"
 
 </table>
 
-<div class="button-wrapper">
-
-<a href="${approveUrl!""}" class="btn btn-approve">
-Approve Order </a>
-
-<a href="${rejectUrl!""}" class="btn btn-reject">
-Reject Order </a>
-
+<div class="rejection-box">
+<b>Reason for Rejection:</b><br>
+${managerComments!""}
 </div>
 
 <p class="footer-text">
-Kindly review and approve/reject the order at the earliest to avoid delays in fulfillment.
+Please review the feedback shared above and connect with the manager if any clarification is required.
 </p>
+
+<p class="footer-text">
+Let us know if any support is required.
+</p>
+
+<div class="signature">
+Regards,<br><br>
+MBPro Sales App
+</div>
+
+</div>
 
 </div>
 

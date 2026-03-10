@@ -9,4 +9,6 @@ public interface MyService {
     Map<String, Object> buildPickAndPackRollbackDataModel();
 
     Map<String, Object> buildmbproApprovalDataModel();
+
+    Map<String, Object> buildMbproRejectDataModel();
 }

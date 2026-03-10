@@ -35,4 +35,11 @@ public class MyController {
         model.addAllAttributes(dataModel);
         return "mbproApproval";
     }
+
+    @GetMapping("/mbproReject")
+    public String mbproReject(Model model) {
+        Map<String, Object> dataModel = myService.buildMbproRejectDataModel();
+        model.addAllAttributes(dataModel);
+        return "mbproReject";
+    }
 }
